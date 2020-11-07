@@ -1,0 +1,33 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Istanbul coverage report
+coverage
+
+# gatsby files
+.cache/
+public
+
+#editor setting
+.vscode
+.idea
+
+#test data
+src/data/
+
+# Storybook
+storybook-static
+
+# MAC
+.DS_Store
+
+# dotenv environment variables file
+.env*
+!.env-example

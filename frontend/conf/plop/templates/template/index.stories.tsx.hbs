@@ -1,0 +1,12 @@
+import React from 'react'
+import {WrapperDecorator} from '@utils/storybook/helper'
+
+import {{ pascalCase name }} from './index'
+
+export default {
+    title: 'Doubu Design System/{{ pascalCase name }}',
+    component: {{ pascalCase name }},
+    decorators: [WrapperDecorator]
+}
+
+export const ExampleOne: React.FC = () => <{{ pascalCase name }} />

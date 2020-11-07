@@ -1,0 +1,37 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"extends": [
+		"plugin:@typescript-eslint/recommended",
+		"prettier",
+		"prettier/@typescript-eslint",
+		"plugin:react/recommended",
+		"xo/esnext"
+	],
+	"plugins": ["@typescript-eslint", "prettier"],
+	"rules": {
+		"prettier/prettier": "error",
+		"indent": 0,
+		"semi": 0,
+		"quotes": [2, "single", {"allowTemplateLiterals": true}],
+		"operator-linebreak": 0,
+		"space-before-function-paren": 0,
+		"@typescript-eslint/explicit-function-return-type": 1,
+		"comma-dangle": 0,
+		"react/display-name": 0
+	},
+	"env": {
+		"jest": true,
+		"node": true,
+		"browser": true
+	},
+	"globals": {
+		"window": true,
+		"document": true
+	},
+	"settings": {
+		"react": {
+			"pragma": "React",
+			"version": "detect"
+		}
+	}
+}

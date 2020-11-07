@@ -1,0 +1,11 @@
+/.cache/*
+/.git/*
+/bin/*
+/coverage/*
+/docs/*
+/flow-typed/npm/*
+/node_modules/*
+/public/*
+gatsby-node.js
+/packages/_shared/keyvault-secrets/*
+/packages/_shared/ms-rest-nodeauth/*

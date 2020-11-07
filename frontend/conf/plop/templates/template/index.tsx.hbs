@@ -1,0 +1,73 @@
+{{{ importTemplateRenderer i18n pure }}}
+{{#if hasProps}}
+import PropTypes from 'prop-types'
+{{/if}}
+
+{{#if i18n}}
+import {useTranslation} from 'react-i18next'
+import {changeLanguage} from '@utils/i18n'
+import {LanguageContext} from '@utils/context'
+{{/if}}
+
+{{#if style}}
+import useStyles from './style.hook'
+{{/if}}
+
+{{#if hasProps}}
+import {CommonProps} from '@utils/types'
+{{/if}}
+
+/**
+* {{ pascalCase name }}
+*/
+{{#if hasProps}}
+interface {{ pascalCase name }}Props extends CommonProps {
+	notRequiredPlaceholderProp?: string
+}
+
+{{/if}}
+const {{ pascalCase name }}: React.FC{{#if hasProps}}<{{ pascalCase name }}Props>{{/if}} = () => {
+	{{#if style}}
+	// Get styles from template-scoped styles hook
+	const classes = useStyles({{#if hasStyleProps}}{placeholderProps: true}{{/if}})
+	{{/if}}
+
+	{{#if i18n}}
+	const {t, i18n} = useTranslation(undefined, {useSuspense: false})
+	// Remove with actual data
+	const {activeLanguage} = useContext(LanguageContext)
+
+	useEffect(() => {
+		changeLanguage(i18n, activeLanguage)
+	}, [activeLanguage, i18n])
+	{{/if}}
+
+	{{#if pure}}
+	// Add dependencies to the array to execute the Memo Hook whenever these change
+	const memoExample = useMemo(() => {
+		// Add logic here
+	}, [])
+	{{/if}}
+	
+	return (
+		{{#if style}}
+		<div id="your-template-id" className={classes.root} {{#if pure}}onClick={(): void => memoExample}{{/if}}>
+		{{else}}
+		<div id="your-template-id" {{#if pure}}onClick={(): void => memoExample}{{/if}}>
+		{{/if}}
+			{{#if i18n}}
+			{t('{{ pascalCase name }}')}
+			{{else}}
+			{{ pascalCase name }}
+			{{/if}}
+		</div>
+	)
+}
+
+{{#if hasProps}}
+{{ pascalCase name }}.propTypes = {
+	notRequiredPlaceholderProp: PropTypes.string,
+}
+{{/if}}
+
+export default {{ pascalCase name }}

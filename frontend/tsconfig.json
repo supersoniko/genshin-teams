@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"sourceMap": true,
+		"baseUrl": "src",
+		"esModuleInterop": true,
+		"noImplicitAny": true,
+		"module": "commonjs",
+		"target": "ES2019",
+		"jsx": "react",
+		"lib": ["dom", "es2015", "es2017", "ES2019"],
+		"paths": {
+			"@components/*": ["components/*"],
+			"@containers/*": ["containers/*"],
+			"@pages/*": ["pages/*"],
+			"@utils/*": ["utils/*"],
+			"@styles/*": ["styles/*"],
+			"@templates/*": ["templates/*"],
+			"@i18n/*": ["i18n/*"],
+			"@svg/*": ["svg/*"],
+			"@api/*": ["api/*"],
+			"@redux/*": ["redux/*"]
+		}
+	},
+	"include": ["./src/**/*"]
+}

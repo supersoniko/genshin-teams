@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm install
+  build:
+    commands:
+      - echo "******** Building site ********"
+      - npm run build:prd
+artifacts:
+  name: site
+  files:
+    - '**/*'
+  base-directory: 'public'

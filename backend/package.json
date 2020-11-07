@@ -1,0 +1,37 @@
+{
+	"name": "genshin-teams-api",
+	"version": "1.0.0",
+	"description": "API for Genshin Teams",
+	"main": "src/handler.ts",
+	"scripts": {
+		"start": "cross-env NODE_ENV=local sls offline",
+		"lint": "eslint src --ext .ts --fix --quiet",
+		"deploy": "cross-env NODE_ENV=prd sls deploy"
+	},
+	"dependencies": {
+		"recaptcha-promise": "^1.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.6",
+		"@typescript-eslint/eslint-plugin": "^4.6.0",
+		"@typescript-eslint/parser": "^4.6.0",
+		"aws-sdk": "^2.783.0",
+		"cross-env": "^7.0.2",
+		"eslint": "^7.12.1",
+		"eslint-config-prettier": "^6.15.0",
+		"eslint-config-xo": "^0.33.1",
+		"eslint-plugin-prettier": "^3.1.4",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.5.1",
+		"prettier": "^2.1.2",
+		"serverless-api-gateway-throttling": "^1.0.1",
+		"serverless-domain-manager": "^5.0.0",
+		"serverless-dotenv-plugin": "^3.1.0",
+		"serverless-offline": "^6.8.0",
+		"serverless-webpack": "^5.3.5",
+		"ts-loader": "^8.0.7",
+		"typescript": "^4.0.5",
+		"webpack": "^5.3.2",
+		"webpack-node-externals": "^2.5.2"
+	}
+}

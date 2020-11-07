@@ -1,0 +1,32 @@
+import {makeStyles, Theme} from '@material-ui/core/styles'
+
+/**
+ * Component-scoped styles which should be used as a hook
+ * inside {{ pascalCase name }} functional component
+ */
+
+{{#if hasStyleProps}}
+export interface StyleProps {
+	placeholderProps?: boolean
+}
+{{/if}}
+
+const useStyles = ({{#if hasStyleProps}}{placeholderProps}:StyleProps{{/if}}) =>
+	makeStyles((theme: Theme) => ({
+		root: {
+			background: theme.palette.warning.main,
+			{{#if hasStyleProps}}
+			color: (): string => {
+				let color = 'red'
+				if (placeholderProps) {
+					color = 'green'
+				}
+
+				return color
+			}
+			{{/if}}
+		}
+	}))()
+
+export default useStyles
+

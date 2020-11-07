@@ -1,0 +1,82 @@
+{{{ importComponentRenderer i18n pure }}}
+import PropTypes from 'prop-types'
+{{#if style}}
+import classNames from 'classnames'
+{{/if}}
+
+import {CommonProps} from '@utils/types'
+
+{{#if i18n}}
+import {useTranslation} from 'react-i18next'
+import {changeLanguage} from '@utils/i18n'
+import {LanguageContext} from '@utils/context'
+{{/if}}
+
+{{#if style}}
+import useStyles from './style.hook'
+{{/if}}
+
+/**
+* {{ pascalCase name }}Component
+*/
+{{#if hasProps}}
+interface {{ pascalCase name }}ComponentProps extends CommonProps {
+    notRequiredPlaceholderProp?: string
+}
+
+{{/if}}
+{{#if forwardingRefs}}
+type Ref = HTMLDivElement
+
+const {{ pascalCase name }}Component = React.forwardRef<Ref, {{#if hasProps}}{{ pascalCase name }}ComponentProps{{else}}CommonProps{{/if}}>(({id, className}, ref) => {
+{{else}}
+const {{ pascalCase name }}Component: React.FC<{{#if hasProps}}{{ pascalCase name }}ComponentProps{{else}}CommonProps{{/if}}> = ({id, className}) => {
+{{/if}}
+    {{#if style}}
+    // Get styles from component-scoped styles hook
+    const classes = useStyles({{#if hasStyleProps}}{placeholderProps: true}{{/if}})
+    {{/if}}
+
+    {{#if i18n}}
+    const {t, i18n} = useTranslation(undefined, {useSuspense: false})
+    // Remove with actual data
+    const {activeLanguage} = useContext(LanguageContext)
+
+    useEffect(() => {
+        changeLanguage(i18n, activeLanguage)
+    }, [activeLanguage, i18n])
+    {{/if}}
+
+	{{#if pure}}
+	// Add dependencies to the array to execute the Memo Hook whenever these change
+	const memoExample = useMemo(() => {
+		// Add logic here
+	}, [])
+	{{/if}}
+
+    return (
+        {{#if style}}
+        <div id={id} {{#if forwardingRefs}}ref={ref}{{/if}} className={classNames(classes.root, className && className)} {{#if pure}}onClick={(): void => memoExample}{{/if}}>
+        {{else}}
+        <div id={id} {{#if forwardingRefs}}ref={ref}{{/if}} className={className} {{#if pure}}onClick={(): void => memoExample}{{/if}}>
+        {{/if}}
+            {{#if i18n}}
+            {t('{{ pascalCase name }}')}
+            {{else}}
+            {{ pascalCase name }}
+            {{/if}}
+		</div>
+	)
+{{#if forwardingRefs}}
+})
+{{else}}
+}
+{{/if}}
+
+{{ pascalCase name }}Component.propTypes = {
+    {{#if hasProps}}notRequiredPlaceholderProp: PropTypes.string,{{/if}}
+	id: PropTypes.string,
+	className: PropTypes.string
+}
+
+export default {{ pascalCase name }}Component
